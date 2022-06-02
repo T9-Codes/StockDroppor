@@ -25,10 +25,10 @@ import util.Util;
 import java.io.IOException;
 
 @ExtensionInfo(
-        Title =         "Stack Dropper",
-        Description =   "Drop any item from your inventory or the BC catalog into a stack",
-        Version =       "1.2",
-        Author =        "WiredSpast"
+        Title =         "Stock Droppor",
+        Description =   "Mettere qualsiasi furno dal vostro inventario o dal catalogo BC in un impila.",
+        Version =       "1.3",
+        Author =        "Alex"
 )
 public class StackDropper extends ExtensionForm {
     // FX-Components
@@ -138,16 +138,16 @@ public class StackDropper extends ExtensionForm {
     private void updateUI() {
         Platform.runLater(() -> {
             if (enabled) {
-                enableOrDisableButton.setText("Disable");
+                enableOrDisableButton.setText("OFF");
             } else {
-                enableOrDisableButton.setText("Enable");
+                enableOrDisableButton.setText("ON");
             }
 
             if (inventory.isLoaded()) {
-                inventoryStatusLabel.setText("Inventory loaded");
+                inventoryStatusLabel.setText("Inventario caricato");
                 inventoryStatusLabel.setTextFill(Paint.valueOf("LIME"));
             } else {
-                inventoryStatusLabel.setText("Inventory not loaded");
+                inventoryStatusLabel.setText("Inventario NON caricato");
                 inventoryStatusLabel.setTextFill(Paint.valueOf("RED"));
             }
         });
@@ -225,7 +225,7 @@ public class StackDropper extends ExtensionForm {
             previousWasPlaced = res != null;
             if(res != null) count++;
         }
-        sendMessage(String.format("Placed %d items", count));
+        sendMessage(String.format("Posati %d furni", count));
         inventory.pickUpItem(async, stackTile.id);
 
         placingThread = null;
@@ -285,7 +285,7 @@ public class StackDropper extends ExtensionForm {
             if(res != null) count++;
         }
 
-        sendMessage(String.format("Placed %d BC items", count));
+        sendMessage(String.format("Posati %d furni BC", count));
         inventory.pickUpItem(async, stackTile.id);
 
         placingThread = null;
